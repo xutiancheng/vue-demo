@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Hello2 from '@/components/Hello2'
+// import Sort from '@/components/Sort'
 
 const NotFoundComponent = { template: '<div>page not find</div>' }
 
@@ -35,6 +36,10 @@ export default new Router({
       path: '/hello',
       component: Hello     
     },
+    // {
+    //   path:'/sort',
+    //   component:Sort
+    // },
     { path: '*', component: NotFoundComponent }
   ]
 })

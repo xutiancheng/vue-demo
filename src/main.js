@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+Vue.component('my-component', {
+  template: '<div>A custom component!</div>'
+})
+
 Vue.config.productionTip = false
 
     Vue.directive('focus', {

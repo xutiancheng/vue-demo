@@ -11,16 +11,32 @@
       <li><router-link to="/hello2/foo/posts">/user/foo/posts</router-link></li>
     </ul>
     <div>{{ xx|message }}</div>
-    <input v-focus/>
+    <sort  :data="gridData"
+    :columns="gridColumns"
+    :filter-key="searchQuery"></sort>
+    <input v-focus v-model="gridData[0].name"/>{{gridData[0].name}}
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+ import sort  from "./components/sort.vue";
+ var data = {
+    xx:'ttt',
+    searchQuery: '',
+    gridColumns: ['name', 'power'],
+    gridData: [
+      { name: 'Chuck Norris', power: Infinity },
+      { name: 'Bruce Lee', power: 9000 },
+      { name: 'Jackie Chan', power: 7000 },
+      { name: 'Jet Li', power: 8000 }
+    ]
+  }
 export default {
+  components:{sort},
   name: 'app',
   data:function(){
-   return {xx:'ttt'}
+   return data
   },
    filters: {
     message: function (value) {
