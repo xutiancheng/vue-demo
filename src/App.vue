@@ -15,12 +15,14 @@
     :columns="gridColumns"
     :filter-key="searchQuery"></sort>
     <input v-focus v-model="gridData[0].name"/>{{gridData[0].name}}
+    <button @click="sdf">加{{count}}</button>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
  import sort  from "./components/sort.vue";
+ import {mapState,mapActions} from 'vuex' 
  var data = {
     xx:'ttt',
     searchQuery: '',
@@ -45,6 +47,18 @@ export default {
       return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
+      methods:{  
+      increment(){  
+        //this.$store.dispatch('incrementsync').then(() => {  
+          console.log(this.$store);  
+        //});  
+      },sdf(){
+        console.log(1);
+      }  
+    },  
+    computed: mapState({ // mapState相当于映射  
+        count: 'numb',  //这个时候count应该等于多少？！！ 是等于store文件里面的count呢还是等于numb？答案是等于numb！这边的意思是mapState把'numb'的值映射给了count，所以count等于10086  
+    })  
   // directives: {
   //   focus: function(el){
       
