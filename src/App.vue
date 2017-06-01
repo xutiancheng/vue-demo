@@ -15,15 +15,26 @@
     :columns="gridColumns"
     :filter-key="searchQuery"></sort>
     <input v-focus v-model="gridData[0].name"/>{{gridData[0].name}}
-    <button @click="sdf">加{{count}}</button>
+    <button @click="test">加{{count}}</button>
+
+    <el-button @click="visible = true">按钮</el-button>
+    <el-dialog v-model="visible" title="Hello world">
+      <p>欢迎使用 Element</p>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="visible = false">取 消</el-button>
+      <el-button type="primary" @click="visible = false">确 定</el-button>
+    </span>      
+    </el-dialog>
+
     <router-view></router-view>
   </div>
 </template>
 
 <script>
  import sort  from "./components/sort.vue";
- import {mapState,mapActions} from 'vuex' 
+ import {mapState,mapActions} from 'vuex'; 
  var data = {
+    visible: false,
     xx:'ttt',
     searchQuery: '',
     gridColumns: ['name', 'power'],
@@ -52,7 +63,7 @@ export default {
         //this.$store.dispatch('incrementsync').then(() => {  
           console.log(this.$store);  
         //});  
-      },sdf(){
+      },test(){
         console.log(1);
       }  
     },  
