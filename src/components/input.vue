@@ -7,7 +7,12 @@
 <script>
 
 export default {
-  props: ['value'],  
+  props:{
+    value: {
+      type: String,
+      default: 100
+    }
+  },  
   name: 'myinput',
   data:function(){
     return {
