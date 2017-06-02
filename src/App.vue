@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @keyup.enter="visible = true">
     <img src="./assets/logo.png">
     <ul>
       <li><router-link to="/hello">Go to Foo1</router-link></li>
@@ -11,13 +11,14 @@
       <li><router-link to="/hello2/foo/posts">/user/foo/posts</router-link></li>
     </ul>
     <div>{{ xx|message }}</div>
+    <div v-text="gridData[0].name"></div>
     <sort  :data="gridData"
     :columns="gridColumns"
     :filter-key="searchQuery"></sort>
-    <input v-focus v-model="gridData[0].name"/>{{gridData[0].name}}
+    <input v-focus v-model="gridData[0].name"  />{{gridData[0].name}}
     <button @click="test">加{{count}}</button>
 
-    <el-button @click="visible = true">按钮</el-button>
+    <el-button  @click="visible = true" >按钮</el-button>
     <el-dialog v-model="visible" title="Hello world">
       <p>欢迎使用 Element</p>
     <span slot="footer" class="dialog-footer">
@@ -25,13 +26,14 @@
       <el-button type="primary" @click="visible = false">确 定</el-button>
     </span>      
     </el-dialog>
-
+    <myinput v-model="xx"></myinput>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
  import sort  from "./components/sort.vue";
+ import myinput  from "./components/input.vue";
  import {mapState,mapActions} from 'vuex'; 
  var data = {
     visible: false,
@@ -46,7 +48,7 @@
     ]
   }
 export default {
-  components:{sort},
+  components:{sort,myinput},
   name: 'app',
   data:function(){
    return data

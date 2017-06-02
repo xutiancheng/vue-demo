@@ -7,6 +7,9 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 
+
+//Vue.config.keyCodes.f3 = 112;
+
 Vue.use(ElementUI)
 
 Vue.component('my-component', {
