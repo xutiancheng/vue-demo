@@ -1,6 +1,7 @@
 <template>
   <div class="price-input">
       <input :value="str"  v-on:input="add($event.target.value)" /><span>{{str}}</span>
+      
   </div>
 </template>
 
@@ -22,6 +23,7 @@ export default {
   methods: {
     add: function (event) {
       this.str = event;
+      this.$emit('increment',event);
     }
   }
 }
