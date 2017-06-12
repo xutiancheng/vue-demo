@@ -17,7 +17,8 @@
     :filter-key="searchQuery"></sort>
     <input v-focus v-model="gridData[0].name"  />{{gridData[0].name}}
     <button @click="test">加{{count}}</button>
-
+        <button @click="increment">+</button>
+    <button @click="decrement">-</button>
     <el-button  @click="visible = true" >按钮</el-button>
     <el-dialog v-model="visible" title="Hello world">
       <p>欢迎使用 Element</p>
@@ -107,11 +108,21 @@ export default {
         this.click=$index;
       },incrementTotal(val) {
         this.xx = val;
-      }   
+      },increment () {
+      this.$store.commit('increment')
+    },
+    decrement () {
+      this.$store.commit('decrement')
+    }   
     },  
-    computed: mapState({ // mapState相当于映射  
-        count: 'numb',  //这个时候count应该等于多少？！！ 是等于store文件里面的count呢还是等于numb？答案是等于numb！这边的意思是mapState把'numb'的值映射给了count，所以count等于10086  
-    })  
+    // computed: mapState({ // mapState相当于映射  
+    //     count: 'count',  //这个时候count应该等于多少？！！ 是等于store文件里面的count呢还是等于numb？答案是等于numb！这边的意思是mapState把'numb'的值映射给了count，所以count等于10086  
+    // })  
+    computed:{
+      count () {
+        return this.$store.state.count
+      }
+    }
   // directives: {
   //   focus: function(el){
       
