@@ -12,7 +12,10 @@ const UserPosts = { template: '<div>Posts</div>' }
 
 Vue.use(Router)
 
+
+
 export default new Router({
+
 	mode: 'history',
   routes: [
 		{
